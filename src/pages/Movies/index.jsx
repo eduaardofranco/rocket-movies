@@ -8,16 +8,15 @@ export function Movies(title) {
     return (
         <Container>
             <Header />
-            <div className="content">
+            <main>
                 <header>
                     <h2>My Movies</h2>
                     <Button 
                         title="Add Movie"
                         icon={LiaPlusSolid}
                     />
-                        
                 </header>
-                <main>
+                <div className="content">
                     <MovieItem title="Interestelar" rating="4">
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus nulla fugit ab vel totam minima repellat quas, nihil earum voluptate repudiandae optio asperiores. Amet est ipsa beatae soluta eaque aspernatur. Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit incidunt hic ut architecto distinctio mollitia, culpa ipsam eaque doloribus eum nulla et repudiandae odit exercitationem, laudantium odio perferendis ad corrupti!</p>
                     </MovieItem>
@@ -30,8 +29,8 @@ export function Movies(title) {
                     <MovieItem title="West Side" rating="5">
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus nulla fugit ab vel totam minima repellat quas, nihil earum voluptate repudiandae optio asperiores. Amet est ipsa beatae soluta eaque aspernatur. Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit incidunt hic ut architecto distinctio mollitia, culpa ipsam eaque doloribus eum nulla et repudiandae odit exercitationem, laudantium odio perferendis ad corrupti!</p>
                     </MovieItem>
-                </main>
-            </div>
+                </div>
+            </main>
         </Container>
 
     )

@@ -26,8 +26,4 @@ export default createGlobalStyle`
     a:hover, button:hover {
         filter: brightness(0.8);
     }
-    .content {
-        margin: 0 auto;
-        width: 133.6rem;
-    }
 `;

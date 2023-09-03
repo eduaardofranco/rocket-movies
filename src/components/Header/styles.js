@@ -2,11 +2,14 @@ import styled from 'styled-components'
 
 export const Container = styled.header`
 
+    grid-area: header;
+
     border-bottom: 1px solid ${({ theme }) => theme.COLORS.BG_300};
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 2.4rem 0;
+    width: 100%;
 
      h1 {
         color: ${({ theme }) => theme.COLORS.PINK};
@@ -20,7 +23,7 @@ export const Container = styled.header`
 `;
 
 export const Search = styled.div`
-    margin: 0 6.4rem;
+    margin: 0 18rem;
     width: 63rem;
     
     input {

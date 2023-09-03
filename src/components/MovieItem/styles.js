@@ -4,7 +4,10 @@ export const Container = styled.div`
     background: ${({ theme }) => theme.COLORS.BG_500};
     border-radius: 1.6rem;
     padding: 3.2rem;
-    margin-bottom: 2.4rem;
+    &+ div {
+        margin-top: 2.4rem;
+    }
+    /* margin-bottom: 2.4rem; */
     h2 {
         color: ${({ theme }) => theme.COLORS.WHITE};
         font-size: 2.4rem;
