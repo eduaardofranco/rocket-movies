@@ -10,9 +10,6 @@ export const Container = styled.div`
         "content";
 
     > main {
-        grid-area: content;
-        max-width: 133.6rem;
-        margin: 0 auto;
         
         header {
             display: flex;
@@ -30,20 +27,6 @@ export const Container = styled.div`
         > .content {
             height: calc(100vh - 31.4rem);
             margin-bottom: 5rem;
-            padding-right: .8rem;
-            overflow-y: auto;
-
-            &::-webkit-scrollbar {
-                width: .8rem;
-            }
-            &::-webkit-scrollbar-track {
-                /* padding-right: 100px; */
-            }
-            &::-webkit-scrollbar-thumb {
-                background: ${({ theme }) => theme.COLORS.PINK};
-                border-radius: .8rem;
-
-            }
         }
     }
 

@@ -23,7 +23,7 @@ export const Container = styled.header`
 `;
 
 export const Search = styled.div`
-    margin: 0 18rem;
+    margin: 0 18.1rem;
     width: 63rem;
     
     input {

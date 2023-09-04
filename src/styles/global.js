@@ -26,4 +26,23 @@ export default createGlobalStyle`
     a:hover, button:hover {
         filter: brightness(0.8);
     }
+
+    main.main {
+        grid-area: content;
+        max-width: 133.6rem;
+        margin: 0 auto;
+        
+    }
+    .content {
+        overflow-y: auto;
+        padding-right: .8rem;
+        &::-webkit-scrollbar {
+            width: .8rem;
+        }
+        &::-webkit-scrollbar-thumb {
+            background: ${({ theme }) => theme.COLORS.PINK};
+            border-radius: .8rem;
+
+        }
+    }
 `;

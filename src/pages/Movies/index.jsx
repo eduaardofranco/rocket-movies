@@ -8,7 +8,7 @@ export function Movies(title) {
     return (
         <Container>
             <Header />
-            <main>
+            <main className='main'>
                 <header>
                     <h2>My Movies</h2>
                     <Button 
