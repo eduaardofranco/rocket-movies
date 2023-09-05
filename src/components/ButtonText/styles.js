@@ -4,7 +4,7 @@ export const Container = styled.button`
     background-color: transparent;
     color: ${({ theme }) => theme.COLORS.PINK};
     display: flex;
-    margin-bottom: 2.4rem;
+    margin: 4rem 0 2.4rem 0;
     &:hover {
         background-color: transparent;
     }

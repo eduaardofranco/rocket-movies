@@ -1,9 +1,7 @@
 import styled from 'styled-components'
 
 export const Container = styled.div`
-    main.main {
-        padding-top: 4rem;
-    }
+
     .content {
         height: calc(100vh - 22.5rem);
         padding-right: 1.5rem;
