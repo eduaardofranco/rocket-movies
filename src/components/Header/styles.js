@@ -45,8 +45,7 @@ export const Profile = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    div {
-        color: ${({ theme }) => theme.COLORS.WHITE};
+    > div {
         display: flex;
         flex-direction: column;
         font-size: 1.4rem;
@@ -54,11 +53,15 @@ export const Profile = styled.div`
         margin-right: .9rem;
         text-align: right;
         
-        > span {
+    }
+    a {
+        color: ${({ theme }) => theme.COLORS.WHITE};
+
+    }
+    span {
             color: ${({ theme }) => theme.COLORS.GRAY};
             font-weight: 400;
         }
-    }
     img {
         border: 1px solid ${({ theme }) => theme.COLORS.GRAY };
         border-radius: 50%;

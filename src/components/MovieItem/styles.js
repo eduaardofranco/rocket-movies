@@ -1,13 +1,14 @@
 import styled from 'styled-components'
+import { Link } from 'react-router-dom'
 
-export const Container = styled.div`
+export const Container = styled(Link)`
     background: ${({ theme }) => theme.COLORS.BG_500};
     border-radius: 1.6rem;
+    display: block;
     padding: 3.2rem;
-    &+ div {
+    &+ a {
         margin-top: 2.4rem;
     }
-    /* margin-bottom: 2.4rem; */
     h2 {
         color: ${({ theme }) => theme.COLORS.WHITE};
         font-size: 2.4rem;

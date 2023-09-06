@@ -10,7 +10,7 @@ export function Detail() {
         <Container>
             <Header />
             <main className="main">
-                <ButtonText title="Back" />
+                <ButtonText title="Back" to="/"/>
                 <div className="content">
                     <div className='header'>
                         <div>

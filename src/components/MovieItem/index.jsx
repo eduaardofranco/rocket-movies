@@ -4,7 +4,7 @@ import { Rating } from '../../components/Rating'
 
 export function MovieItem({ title, rating, children }) {
     return(
-        <Container>
+        <Container to="/detail/1">
             <h2>{title}</h2>
             <Rating grade={rating} />
             {children}

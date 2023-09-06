@@ -1,4 +1,5 @@
 import { Container, Search, Profile } from './styles'
+import { Link } from 'react-router-dom'
 
 export function Header() {
     return(
@@ -9,10 +10,16 @@ export function Header() {
             </Search>
             <Profile>
                 <div>
-                    Eduardo Franco
-                    <span>Exit</span>
+                    <Link to="/profile">
+                        Eduardo Franco
+                    </Link>
+                    <Link to="">
+                        <span>Exit</span>
+                    </Link>
                 </div>
-                <img src="https://github.com/eduaardofranco.png" alt="User prifile photo"></img>
+                <Link to="/profile">
+                    <img src="https://github.com/eduaardofranco.png" alt="User prifile photo"></img>
+                </Link>
             </Profile>
 
         </Container>

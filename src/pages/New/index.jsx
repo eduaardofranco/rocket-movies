@@ -6,13 +6,14 @@ import { Textarea } from '../../components/Textarea'
 import { Section } from '../../components/Section'
 import { AddTag } from '../../components/AddTag'
 import { Button } from '../../components/Button'
+import { Link } from 'react-router-dom'
 
 export function New() {
     return(
         <Container>
             <Header />
             <main className="main">
-                <ButtonText title="Back" />
+                    <ButtonText title="Back" to="/" />
                 
                 <div className="content">
                     <h1>New Movie</h1>

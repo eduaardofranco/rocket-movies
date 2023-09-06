@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const Container = styled.textarea`
-    background: ${({ theme }) => theme.COLORS.BG_300};
+    background: ${({ theme }) => theme.COLORS.BG_700};
     border-radius: 1rem;
     color: ${({ theme }) => theme.COLORS.GRAY};
     font-family: 'Roboto', sans-serif;

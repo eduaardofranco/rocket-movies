@@ -3,6 +3,7 @@ import { Header } from '../../components/Header'
 import { Button } from '../../components/Button'
 import { MovieItem } from '../../components/MovieItem'
 import { LiaPlusSolid } from 'react-icons/lia'
+import { Link } from 'react-router-dom'
 
 export function Movies(title) {
     return (
@@ -11,10 +12,12 @@ export function Movies(title) {
             <main className='main'>
                 <header>
                     <h2>My Movies</h2>
-                    <Button 
-                        title="Add Movie"
-                        icon={LiaPlusSolid}
-                    />
+                    <Link to="/new">
+                        <Button 
+                            title="Add Movie"
+                            icon={LiaPlusSolid}
+                        />
+                    </Link>
                 </header>
                 <div className="content">
                     <MovieItem title="Interestelar" rating="4">
