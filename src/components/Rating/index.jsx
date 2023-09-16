@@ -6,9 +6,9 @@ export function Rating({ grade, isBig }) {
 
     for (let i = 1; i <=5; i++) {
         if( i <= grade ) {
-            stars.push(<AiFillStar />)
+            stars.push(<AiFillStar key={i} />)
         } else {
-            stars.push(<AiOutlineStar />)
+            stars.push(<AiOutlineStar key={i} />)
         }
     }
 
