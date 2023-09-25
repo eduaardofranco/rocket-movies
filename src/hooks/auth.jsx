@@ -16,7 +16,7 @@ function AuthProvider({ children }) {
             localStorage.setItem('@rocketmovies:user', JSON.stringify(user))
             localStorage.setItem('@rocketmovies:token', token)
 
-            //add toke in the header of requests
+            //add token in the header of requests
             api.defaults.headers.authorization = `Bear ${token}`
             setData({ user, token })
 
@@ -45,8 +45,19 @@ function AuthProvider({ children }) {
         }
     },[])
 
+    function signOut() {
+        localStorage.removeItem('@rocketmovies:token')
+        localStorage.removeItem('@rocketmovies:user')
+
+        setData({})
+    }
+
     return(
-        <AuthContext.Provider value={{ signIn, user: data.user }}>
+        <AuthContext.Provider value={{
+            signIn,
+            signOut,
+            user: data.user
+        }}>
             {children}
         </AuthContext.Provider>
     )
