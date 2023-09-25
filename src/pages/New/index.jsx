@@ -7,8 +7,18 @@ import { Section } from '../../components/Section'
 import { AddTag } from '../../components/AddTag'
 import { Button } from '../../components/Button'
 import { Link } from 'react-router-dom'
+import { useState } from 'react'
 
 export function New() {
+
+    const [tags, setTags] = useState([])
+    const [newTag, setNewTag] = useState('')
+
+    function handleAddTag() {
+        setTags(prevState => [...prevState, newTag])
+        setNewTag('')
+    }
+
     return(
         <Container>
             <Header />
@@ -26,8 +36,22 @@ export function New() {
                     </Form>
                     <Section title="Tags">
                         <div className="tags">
-                            <AddTag value="Drama" />
-                            <AddTag placeholder="New Tag" isNew />
+                            {
+                                tags.map((tag, index) => (
+                                    <AddTag 
+                                        key={String(index)}
+                                        value={tag}
+                                        onClick={() => {}}
+                                    />
+                                ))
+                            }
+                            <AddTag 
+                                placeholder="New Tag"
+                                isNew
+                                value={newTag}
+                                onChange={e => setNewTag(e.target.value)}
+                                onClick={handleAddTag}
+                            />
                         </div>
                     </Section>
                     <div className="buttons">
