@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from 'react'
+import { createContext, useContext, useState, useEffect } from 'react'
 import { api } from '../services/api'
 
 export const AuthContext = createContext({})
@@ -12,6 +12,10 @@ function AuthProvider({ children }) {
             const response = await api.post('/sessions', { email, password })
             const { user, token } = response.data
 
+            //set user and toke to the localstorage
+            localStorage.setItem('@rocketmovies:user', JSON.stringify(user))
+            localStorage.setItem('@rocketmovies:token', token)
+
             //add toke in the header of requests
             api.defaults.headers.authorization = `Bear ${token}`
             setData({ user, token })
@@ -24,6 +28,22 @@ function AuthProvider({ children }) {
             }
         }
     }
+
+    useEffect(() => {
+        const token = localStorage.getItem('@rocketmovies:token')
+        const user = localStorage.getItem('@rocketmovies:user')
+        //if there is token e user in the localstorage
+        if(token && user) {
+            //sets token to the header of requests again
+            api.defaults.headers.authorization = `Bear ${token}`
+
+            setData({
+                token,
+                user: JSON.parse(user)
+            })
+
+        }
+    },[])
 
     return(
         <AuthContext.Provider value={{ signIn, user: data.user }}>
