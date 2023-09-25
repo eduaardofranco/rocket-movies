@@ -52,8 +52,17 @@ function AuthProvider({ children }) {
         setData({})
     }
     
-    async function updateProfile({ user }) {
+    async function updateProfile({ user, avatarFile }) {
         try {
+
+            //if there is avatar, update it
+            if(avatarFile) {
+                const fileUploadForm = new FormData()
+                fileUploadForm.append('avatar', avatarFile)
+
+                const response = await api.patch('/users/avatar',fileUploadForm)
+                user.avatar = response.data.avatar
+            }
             //update user details
             await api.put('/users', user)
             //update infos localstorage also
