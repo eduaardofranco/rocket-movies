@@ -17,7 +17,7 @@ function AuthProvider({ children }) {
             localStorage.setItem('@rocketmovies:token', token)
 
             //add token in the header of requests
-            api.defaults.headers.authorization = `Bear ${token}`
+            api.defaults.headers.common['Authorization'] = `Bear ${token}`
             setData({ user, token })
 
         } catch(error) {
@@ -35,7 +35,7 @@ function AuthProvider({ children }) {
         //if there is token e user in the localstorage
         if(token && user) {
             //sets token to the header of requests again
-            api.defaults.headers.authorization = `Bear ${token}`
+            api.defaults.headers.common['Authorization'] = `Bear ${token}`
 
             setData({
                 token,
@@ -51,11 +51,31 @@ function AuthProvider({ children }) {
 
         setData({})
     }
+    
+    async function updateProfile({ user }) {
+        try {
+            //update user details
+            await api.put('/users', user)
+            //update infos localstorage also
+            localStorage.setItem('@rocketmovies:user', JSON.stringify(user))
+
+            setData({ user, token: data.token})
+            alert('Profile updated!')
+
+        } catch(error) {
+            if(error.response) {
+                alert(error.response.data.message)
+            } else {
+                alert('Error to update infos')
+            }
+        }
+    }
 
     return(
         <AuthContext.Provider value={{
             signIn,
             signOut,
+            updateProfile,
             user: data.user
         }}>
             {children}
