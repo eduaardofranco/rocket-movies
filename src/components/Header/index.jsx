@@ -2,9 +2,13 @@ import { Container, Search, Profile } from './styles'
 import { Link } from 'react-router-dom'
 import { useAuth } from '../../hooks/auth'
 import { api } from '../../services/api'
+import { useState } from 'react'
 import avatarPlaceholder from '../../assets/avatar_placeholder.svg'
-export function Header() {
+
+
+export function Header({ children }) {
     const { signOut, user } = useAuth()
+    const [search, setSearch] = useState('')
 
     const avatarUrl = user.avatar ? `${api.defaults.baseURL}/files/${user.avatar}` : avatarPlaceholder
 
@@ -13,7 +17,7 @@ export function Header() {
         <Container>
             <h1>RocketMovies</h1>
             <Search>
-                <input type="search" placeholder="Search by title" />
+                {children}
             </Search>
             <Profile>
                 <div>

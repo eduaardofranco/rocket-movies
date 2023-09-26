@@ -9,23 +9,39 @@ import { useEffect, useState } from 'react'
 
 export function Movies(title) {
     const [movieNotes, setMovieNotes] = useState([])
+    const [search, setSearch] = useState('')
+
     
+    // useEffect(() => {
+    //     async function fetchMovies() {
+    //         try {
+    //             const response = await api.get("/movie_notes");
+    //             setMovieNotes(response.data);
+    //         } catch (error) {
+    //             console.error("Error fetching movie notes:", error);
+    //         }
+    //     }
+    //     fetchMovies()
+    // },[])
     useEffect(() => {
-        async function fetchMovies() {
-            try {
-                const response = await api.get("/movie_notes");
-                setMovieNotes(response.data);
-            } catch (error) {
-                console.error("Error fetching movie notes:", error);
-            }
+        async function fetchMovieNotes() {
+          const response = await api.get(`/movie_notes?title=${search}`);
+          setMovieNotes(response.data);
         }
-        fetchMovies()
-    },[])
+    
+        fetchMovieNotes();
+      }, [search]);
 
 
     return (
         <Container>
-            <Header />
+            <Header>
+                <input
+                  type="text"
+                  placeholder="Search by title"
+                  onChange={(e) => setSearch(e.target.value)}
+                />
+            </Header>
             <main className='main'>
                 <header>
                     <h2>My Movies</h2>
