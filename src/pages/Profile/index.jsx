@@ -22,13 +22,16 @@ export function Profile() {
     async function handleUpdate() {
         if(name === "") return alert('Name can not be empty')
         if(email === "") return alert('E-mail can not be empty')
-        const user = {
+        const updated = {
             name, 
             email,
             password: passwordNew,
             old_password: passwordOld
         }
-        await updateProfile({ user, avatarFile })
+        const userUpdated = Object.assign(user, updated)
+        
+        // return console.log(userUpdated)
+        await updateProfile({ user: userUpdated, avatarFile })
     }
 
     function handleChangeAvatar(event) {
