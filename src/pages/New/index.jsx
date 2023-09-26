@@ -6,13 +6,19 @@ import { Textarea } from '../../components/Textarea'
 import { Section } from '../../components/Section'
 import { AddTag } from '../../components/AddTag'
 import { Button } from '../../components/Button'
-import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { useState } from 'react'
+import { api } from '../../services/api'
 
 export function New() {
+    const [title, setTitle] = useState('')
+    const [description, setDescription] = useState('')
+    const [rating, setRating] = useState(0)
 
     const [tags, setTags] = useState([])
     const [newTag, setNewTag] = useState('')
+
+    const navigate = useNavigate()
 
     function handleAddTag() {
         
@@ -21,11 +27,28 @@ export function New() {
             setTags(prevState => [...prevState, newTag])
             setNewTag('')
         } else {
-            alert('Please enter a new Tag')
+            return alert('Please enter a new Tag')
         }
     }
     function handleRemoveTag(deleted) {
         setTags(prevState => prevState.filter((tag, index) => index !== deleted))
+    }
+
+    async function handleNewMovie() {
+        if(!title) {
+            return alert('Please enter a Title')
+        }
+        if(!rating) {
+            return alert('Please enter a Grade')
+        }
+        await api.post('/movie_notes',{
+            title,
+            description,
+            tags,
+            rating
+        })
+        alert('Movie registred sucessfully!')
+        navigate('/')
     }
 
     return(
@@ -38,10 +61,24 @@ export function New() {
                     <h1>New Movie</h1>
                     <Form>
                         <div>
-                            <Input placeholder="Title" type="text" />
-                            <Input placeholder="Your Grade (0 to 5)" type="number" min="0" max="5" />
+                            <Input
+                             placeholder="Title"
+                             type="text"
+                             onChange={e => setTitle(e.target.value)}
+                            />
+                            <Input
+                             placeholder="Your Grade (0 to 5)"
+                             type="number"
+                             min="0"
+                             max="5"
+                             onChange={e => setRating(e.target.value)}
+                             />
                         </div>
-                        <Textarea placeholder="Observations" type="text" />
+                        <Textarea
+                          placeholder="Observations"
+                          type="text"
+                          onChange={e => setDescription(e.target.value)}
+                        />
                     </Form>
                     <Section title="Tags">
                         <div className="tags">
@@ -66,7 +103,10 @@ export function New() {
                     </Section>
                     <div className="buttons">
                         <Button title="Cancel" />
-                        <Button title="Save" />
+                        <Button
+                          title="Save"
+                          onClick={handleNewMovie}
+                        />
                     </div>
                 </div>
 
