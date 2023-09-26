@@ -41,7 +41,7 @@ export function Detail() {
                         </div>
                         <div>
                             <img src={avatarUrl} /*alt={`${movie.user.name}'s photo`} *//>
-                            <p>{movie.user.name}</p>
+                            {/* <p>{movie.user.name}</p> */}
                             <p>
                                 <FiClock />
                                 {movie.created_at}
