@@ -4,8 +4,25 @@ import { Button } from '../../components/Button'
 import { MovieItem } from '../../components/MovieItem'
 import { LiaPlusSolid } from 'react-icons/lia'
 import { Link } from 'react-router-dom'
+import { api } from '../../services/api'
+import { useEffect, useState } from 'react'
 
 export function Movies(title) {
+    const [movieNotes, setMovieNotes] = useState([])
+    
+    useEffect(() => {
+        async function fetchMovies() {
+            try {
+                const response = await api.get("/movie_notes");
+                setMovieNotes(response.data);
+            } catch (error) {
+                console.error("Error fetching movie notes:", error);
+            }
+        }
+        fetchMovies()
+    },[])
+
+
     return (
         <Container>
             <Header />
@@ -20,18 +37,21 @@ export function Movies(title) {
                     </Link>
                 </header>
                 <div className="content">
-                    <MovieItem title="Interestelar" rating="4">
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus nulla fugit ab vel totam minima repellat quas, nihil earum voluptate repudiandae optio asperiores. Amet est ipsa beatae soluta eaque aspernatur. Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit incidunt hic ut architecto distinctio mollitia, culpa ipsam eaque doloribus eum nulla et repudiandae odit exercitationem, laudantium odio perferendis ad corrupti!</p>
-                    </MovieItem>
-                    <MovieItem title="Hang of power" rating="3">
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus nulla fugit ab vel totam minima repellat quas, nihil earum voluptate repudiandae optio asperiores. Amet est ipsa beatae soluta eaque aspernatur. Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit incidunt hic ut architecto distinctio mollitia, culpa ipsam eaque doloribus eum nulla et repudiandae odit exercitationem, laudantium odio perferendis ad corrupti!</p>
-                    </MovieItem>
-                    <MovieItem title="Kill Bill 2" rating="1">
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus nulla fugit ab vel totam minima repellat quas, nihil earum voluptate repudiandae optio asperiores. Amet est ipsa beatae soluta eaque aspernatur. Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit incidunt hic ut architecto distinctio mollitia, culpa ipsam eaque doloribus eum nulla et repudiandae odit exercitationem, laudantium odio perferendis ad corrupti!</p>
-                    </MovieItem>
-                    <MovieItem title="West Side" rating="5">
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus nulla fugit ab vel totam minima repellat quas, nihil earum voluptate repudiandae optio asperiores. Amet est ipsa beatae soluta eaque aspernatur. Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit incidunt hic ut architecto distinctio mollitia, culpa ipsam eaque doloribus eum nulla et repudiandae odit exercitationem, laudantium odio perferendis ad corrupti!</p>
-                    </MovieItem>
+                    {
+                        movieNotes.map(movie => (
+                        
+                            <MovieItem
+                                title={movie.title}
+                                rating={movie.rating}
+                                key={String(movie.id)}
+                                tags={movie.tags}
+                                >
+
+                                <p>{movie.description}</p>
+
+                            </MovieItem>
+                        ))
+                    }
                 </div>
             </main>
         </Container>

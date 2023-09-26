@@ -6,6 +6,7 @@ export const Container = styled(Link)`
     border-radius: 1.6rem;
     display: block;
     padding: 3.2rem;
+    min-width: 130rem;
     &+ a {
         margin-top: 2.4rem;
     }
