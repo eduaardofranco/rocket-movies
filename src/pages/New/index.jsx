@@ -15,8 +15,17 @@ export function New() {
     const [newTag, setNewTag] = useState('')
 
     function handleAddTag() {
-        setTags(prevState => [...prevState, newTag])
-        setNewTag('')
+        
+        //add tag if field is not empty and tag doesnt exist 
+        if(newTag && !tags.includes(newTag)) {
+            setTags(prevState => [...prevState, newTag])
+            setNewTag('')
+        } else {
+            alert('Please enter a new Tag')
+        }
+    }
+    function handleRemoveTag(deleted) {
+        setTags(prevState => prevState.filter((tag, index) => index !== deleted))
     }
 
     return(
@@ -41,7 +50,8 @@ export function New() {
                                     <AddTag 
                                         key={String(index)}
                                         value={tag}
-                                        onClick={() => {}}
+                                        onClick={() => handleRemoveTag(index)}
+                                        readOnly
                                     />
                                 ))
                             }
