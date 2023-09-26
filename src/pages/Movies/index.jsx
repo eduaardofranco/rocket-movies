@@ -6,23 +6,18 @@ import { LiaPlusSolid } from 'react-icons/lia'
 import { Link } from 'react-router-dom'
 import { api } from '../../services/api'
 import { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 export function Movies(title) {
     const [movieNotes, setMovieNotes] = useState([])
     const [search, setSearch] = useState('')
 
-    
-    // useEffect(() => {
-    //     async function fetchMovies() {
-    //         try {
-    //             const response = await api.get("/movie_notes");
-    //             setMovieNotes(response.data);
-    //         } catch (error) {
-    //             console.error("Error fetching movie notes:", error);
-    //         }
-    //     }
-    //     fetchMovies()
-    // },[])
+    const navigate = useNavigate()
+
+    function handleDetail(id) {
+        //navigate to detail page
+        navigate(`/detail/${id}`)
+    }
     useEffect(() => {
         async function fetchMovieNotes() {
           const response = await api.get(`/movie_notes?title=${search}`);
@@ -61,6 +56,7 @@ export function Movies(title) {
                                 rating={movie.rating}
                                 key={String(movie.id)}
                                 tags={movie.tags}
+                                onClick={() => handleDetail(movie.id)}
                                 >
 
                                 <p>{movie.description}</p>

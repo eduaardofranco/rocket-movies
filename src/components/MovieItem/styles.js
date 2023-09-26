@@ -1,13 +1,13 @@
 import styled from 'styled-components'
-import { Link } from 'react-router-dom'
 
-export const Container = styled(Link)`
+export const Container = styled.div`
     background: ${({ theme }) => theme.COLORS.BG_500};
     border-radius: 1.6rem;
+    cursor: pointer;
     display: block;
     padding: 3.2rem;
     min-width: 130rem;
-    &+ a {
+    &+ div {
         margin-top: 2.4rem;
     }
     h2 {

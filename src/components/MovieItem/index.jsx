@@ -2,15 +2,15 @@ import { Container } from './styles'
 import { Tag } from '../../components/Tags'
 import { Rating } from '../../components/Rating'
 
-export function MovieItem({ title, rating, children, tags }) {
+export function MovieItem({ title, rating, children, tags, onClick }) {
     return(
-        <Container to="/detail/1">
+        <Container onClick={onClick}>
             <h2>{title}</h2>
             <Rating grade={rating} />
             {children}
-
+            
             {
-                tags.map(tag => (
+                tags && tags.map(tag => (
                     <Tag
                      title={tag.name}
                      key={String(tag.id)}
