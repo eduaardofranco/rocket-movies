@@ -13,20 +13,32 @@ import { useAuth } from '../../hooks/auth'
 
  
 export function Detail() {
-    const [movie, setMovie] = useState('')
+    const [movie, setMovie] = useState({user:{name: ''}})
+    const [dateCreated, setDateCreated] = useState('')
+    const [timeCreated, setTimeCreated] = useState('')
     const { user } = useAuth()
 
     const params = useParams()
 
     const avatarUrl = user.avatar ? `${api.defaults.baseURL}/files/${user.avatar}` : avatarPlaceholder
 
+
     useEffect(() => {
-        async function fetchMovieDetail() {
-            const response = await api.get(`/movie_notes/${params.id}`)
+        api.get(`movie_notes/${params.id}`).then(response => {
             setMovie(response.data)
-            console.log(response.data.user.name)
-        }
-        fetchMovieDetail()
+
+        })
+        //format the date
+        .then(() => {
+
+            const dateCreated = new Date(movie.created_at).toLocaleDateString("en-GB")
+            const timeCreated = new Date(movie.created_at).toLocaleTimeString("en-GB",{ hour: "2-digit", minute: "2-digit" })
+            console.log(typeof new Date(movie.created_at).toLocaleTimeString("en-GB",{ hour: "2-digit", minute: "2-digit" }))
+
+            setDateCreated(dateCreated)
+            setTimeCreated(timeCreated)
+
+        })
     },[])
     return(
         <Container>
@@ -40,11 +52,11 @@ export function Detail() {
                             <Rating grade={movie.rating}  isBig/>
                         </div>
                         <div>
-                            <img src={avatarUrl} /*alt={`${movie.user.name}'s photo`} *//>
-                            {/* <p>{movie.user.name}</p> */}
+                            <img src={avatarUrl} alt={`${movie.user.name}'s photo`}/>
+                            <p>Por {movie.user.name}</p>
                             <p>
                                 <FiClock />
-                                {movie.created_at}
+                                {dateCreated} ás {timeCreated}
                             </p>
                         </div>
                         <div>

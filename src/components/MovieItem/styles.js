@@ -23,5 +23,7 @@ export const Container = styled.div`
         font-family: 'Roboto', sans-serif;
         margin: 1.5rem 0;
         text-overflow: ellipsis;
+        max-height: 4rem;
+        overflow: hidden;
     }
 `;
