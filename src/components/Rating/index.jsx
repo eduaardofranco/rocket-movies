@@ -1,7 +1,7 @@
 import { Container } from './styles'
 import { AiFillStar, AiOutlineStar } from 'react-icons/ai'
 
-export function Rating({ grade, isBig }) {
+export function Rating({ grade, isbig }) {
     let stars = []
 
     for (let i = 1; i <=5; i++) {
@@ -13,7 +13,7 @@ export function Rating({ grade, isBig }) {
     }
 
     return(
-        <Container isBig={isBig}>
+        <Container isbig={isbig}>
             {stars}
         </Container>
     )

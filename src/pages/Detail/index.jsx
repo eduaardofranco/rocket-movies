@@ -27,19 +27,25 @@ export function Detail() {
         api.get(`movie_notes/${params.id}`).then(response => {
             setMovie(response.data)
 
-        })
-        //format the date
-        .then(() => {
-
+        }).catch(error => {
+            console.error('Error fetching movie data:', error);
+          });
+    },[])
+    
+    //format the date
+    useEffect(() => {
+        //This approach ensures that the date and time formatting is done after the movie state is properly set
+        //and handles potential issues related to invalid date formats
+        if(movie.created_at) {
             const dateCreated = new Date(movie.created_at).toLocaleDateString("en-GB")
             const timeCreated = new Date(movie.created_at).toLocaleTimeString("en-GB",{ hour: "2-digit", minute: "2-digit" })
-            console.log(typeof new Date(movie.created_at).toLocaleTimeString("en-GB",{ hour: "2-digit", minute: "2-digit" }))
-
+    
             setDateCreated(dateCreated)
             setTimeCreated(timeCreated)
+        }
+    }, [movie.created_at])
 
-        })
-    },[])
+
     return(
         <Container>
             <Header />
@@ -49,14 +55,15 @@ export function Detail() {
                     <div className='header'>
                         <div>
                             <h1>{movie.title}</h1>
-                            <Rating grade={movie.rating}  isBig/>
+                            <Rating grade={movie.rating}  isbig="true" />
                         </div>
                         <div>
                             <img src={avatarUrl} alt={`${movie.user.name}'s photo`}/>
                             <p>Por {movie.user.name}</p>
                             <p>
                                 <FiClock />
-                                {dateCreated} ás {timeCreated}
+                                {dateCreated} às {timeCreated}
+                                {/* {movie.created_at} */}
                             </p>
                         </div>
                         <div>
