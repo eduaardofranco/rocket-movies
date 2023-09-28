@@ -1,6 +1,18 @@
 import styled from 'styled-components'
 
 export const Container = styled.div`
+
+    main > div:first-child {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .deleteButton {
+        display: flex;
+        justify-self: right;
+        width: 20rem;
+    }
     
     h1 {
         color: ${({ theme }) => theme.COLORS.WHITE};

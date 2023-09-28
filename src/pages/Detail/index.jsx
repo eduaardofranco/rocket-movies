@@ -1,12 +1,13 @@
 import { Container } from './styles'
 import { Header } from '../../components/Header'
+import { Button } from '../../components/Button'
 import { ButtonText } from '../../components/ButtonText'
 import { Rating } from '../../components/Rating'
 import { Tag } from '../../components/Tags'
 import { FiClock } from 'react-icons/fi'
 import { useEffect, useState } from 'react'
 import { api } from '../../services/api'
-import { useParams } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 // import { format } from 'date-fns'
 import avatarPlaceholder from '../../assets/avatar_placeholder.svg'
 import { useAuth } from '../../hooks/auth'
@@ -16,12 +17,21 @@ export function Detail() {
     const [movie, setMovie] = useState({user:{name: ''}})
     const [dateCreated, setDateCreated] = useState('')
     const [timeCreated, setTimeCreated] = useState('')
+    
     const { user } = useAuth()
-
     const params = useParams()
+    const navigate = useNavigate()
 
     const avatarUrl = user.avatar ? `${api.defaults.baseURL}/files/${user.avatar}` : avatarPlaceholder
 
+    async function handleDeleteMovie() {
+        const confirmDelete = window.confirm('Are you sure you want to delete the Movie?')
+        
+        if(confirmDelete) {
+            await api.delete(`/movie_notes/${params.id}`)
+            navigate('/')
+        }
+    }
 
     useEffect(() => {
         api.get(`movie_notes/${params.id}`).then(response => {
@@ -50,7 +60,10 @@ export function Detail() {
         <Container>
             <Header />
             <main className="main">
-                <ButtonText title="Back" to="/"/>
+                <div>
+                    <ButtonText title="Back" to="/"/>
+                    <Button className="deleteButton" title='Delete Movie' onClick={handleDeleteMovie} />
+                </div>
                 <div className="content">
                     <div className='header'>
                         <div>
