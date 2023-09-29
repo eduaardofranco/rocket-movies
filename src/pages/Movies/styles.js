@@ -27,6 +27,14 @@ export const Container = styled.div`
         > .content {
             height: calc(100vh - 31.4rem);
             margin-bottom: 5rem;
+            > h2 {
+                color: ${({ theme }) => theme.COLORS.GRAY};
+                font-size: 3rem;
+                font-style: italic;
+                font-weight: 400;
+                text-align: center;
+        }
+
         }
     }
 

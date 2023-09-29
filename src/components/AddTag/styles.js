@@ -2,8 +2,8 @@ import styled from 'styled-components'
 
 export const Container = styled.span`
    
-   background-color: ${({ theme, isNew }) => isNew ? "transparent" : theme.COLORS.BG_700};
-    border: ${({ theme, isNew }) => isNew ? `.1rem dashed ${theme.COLORS.GRAY}` : 'none'};
+   background-color: ${({ theme, isnew }) => isnew ? "transparent" : theme.COLORS.BG_700};
+    border: ${({ theme, isnew }) => isnew ? `.1rem dashed ${theme.COLORS.GRAY}` : 'none'};
     border-radius: 1rem;
     
     display: flex;
@@ -16,7 +16,7 @@ export const Container = styled.span`
     > input {
         border: none;
         background: none;
-        color: ${({ theme, isNew }) => isNew ? theme.COLORS.GRAY : theme.COLORS.WHITE};
+        color: ${({ theme, isnew }) => isnew ? theme.COLORS.GRAY : theme.COLORS.WHITE};
         width: auto;
 
     }

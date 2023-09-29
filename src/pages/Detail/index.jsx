@@ -8,7 +8,6 @@ import { FiClock } from 'react-icons/fi'
 import { useEffect, useState } from 'react'
 import { api } from '../../services/api'
 import { useParams, useNavigate } from 'react-router-dom'
-// import { format } from 'date-fns'
 import avatarPlaceholder from '../../assets/avatar_placeholder.svg'
 import { useAuth } from '../../hooks/auth'
 

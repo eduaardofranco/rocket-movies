@@ -94,7 +94,7 @@ export function New() {
                             }
                             <AddTag 
                                 placeholder="New Tag"
-                                isNew
+                                isnew="true"
                                 value={newTag}
                                 onChange={e => setNewTag(e.target.value)}
                                 onClick={handleAddTag}

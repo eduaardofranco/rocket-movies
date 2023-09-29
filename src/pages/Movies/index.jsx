@@ -12,6 +12,7 @@ export function Movies(title) {
     const [movieNotes, setMovieNotes] = useState([])
     const [search, setSearch] = useState('')
 
+
     const navigate = useNavigate()
 
     function handleDetail(id) {
@@ -48,8 +49,11 @@ export function Movies(title) {
                     </Link>
                 </header>
                 <div className="content">
-                    {
-                        movieNotes.map(movie => (
+                    
+                    {/* if there is no movie, show message */}
+                    {movieNotes.length === 0 && <h2>no movies yet</h2>}
+                    {    
+                        movieNotes && movieNotes.map(movie => (
                         
                             <MovieItem
                                 title={movie.title}

@@ -6,6 +6,7 @@ export const AuthContext = createContext({})
 function AuthProvider({ children }) {
     const [data, setData] = useState({})
 
+
     //authentication function
     async function signIn({ email, password }) {
         try {

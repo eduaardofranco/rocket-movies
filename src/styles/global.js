@@ -29,7 +29,7 @@ export default createGlobalStyle`
 
     main.main {
         grid-area: content;
-        max-width: 133.6rem;
+        width: 133.6rem;
         margin: 0 auto;
         
     }

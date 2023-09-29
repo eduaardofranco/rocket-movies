@@ -1,16 +1,16 @@
 import { Container } from './styles'
 import { AiOutlineClose, AiOutlinePlus } from 'react-icons/ai'
 
-export function AddTag({ value, isNew, onClick, ...rest }) {
+export function AddTag({ value, isnew, onClick, ...rest }) {
     return(
-        <Container isNew={isNew} >
+        <Container isnew={isnew} >
             <input value={value} type="text" { ...rest } />
             <button
                 type="button"
-                className={ isNew ? "button-add" : "button-delete" }
+                className={ isnew ? "button-add" : "button-delete" }
                 onClick={onClick}
             >
-                { isNew ? <AiOutlinePlus /> : <AiOutlineClose /> }
+                { isnew ? <AiOutlinePlus /> : <AiOutlineClose /> }
 
             </button>
         </Container>
