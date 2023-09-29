@@ -61,6 +61,7 @@ export const Profile = styled.div`
     span {
             color: ${({ theme }) => theme.COLORS.GRAY};
             font-weight: 400;
+            cursor: pointer;
         }
     img {
         border: 1px solid ${({ theme }) => theme.COLORS.GRAY };

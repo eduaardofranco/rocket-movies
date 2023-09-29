@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { useAuth } from '../../hooks/auth'
 import { api } from '../../services/api'
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import avatarPlaceholder from '../../assets/avatar_placeholder.svg'
 
 
@@ -11,6 +12,13 @@ export function Header({ children }) {
     const [search, setSearch] = useState('')
 
     const avatarUrl = user.avatar ? `${api.defaults.baseURL}/files/${user.avatar}` : avatarPlaceholder
+    
+    const navigation = useNavigate()
+
+    function handleSignOut() {
+        navigation("/")
+        signOut()
+    }
 
 
     return(
@@ -24,9 +32,7 @@ export function Header({ children }) {
                     <Link to="/profile">
                         {user.name}
                     </Link>
-                    <Link to="">
-                        <span onClick={signOut}>Exit</span>
-                    </Link>
+                    <span onClick={handleSignOut}>Exit</span>
                 </div>
                 <Link to="/profile">
                     <img src={avatarUrl} alt={`${user.name} photo`}></img>
