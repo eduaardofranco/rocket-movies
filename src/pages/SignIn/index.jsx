@@ -5,6 +5,7 @@ import { FiMail, FiLock } from 'react-icons/fi'
 import { Link } from 'react-router-dom'
 import { useAuth } from '../../hooks/auth'
 import { useState } from 'react'
+import { ValidationMessage } from '../../components/ValidationMessage'
 
 
 export function SignIn() {
@@ -30,6 +31,9 @@ export function SignIn() {
                     onChange={e => setEmail(e.target.value)}
                 
                 />
+                <ValidationMessage>
+                    <p>Inform a valid e-mail</p>
+                </ValidationMessage>
                 <Input 
                     placeholder="Password"
                     type="password"
