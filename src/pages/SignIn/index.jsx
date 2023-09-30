@@ -4,19 +4,42 @@ import { Button } from '../../components/Button'
 import { FiMail, FiLock } from 'react-icons/fi'
 import { Link } from 'react-router-dom'
 import { useAuth } from '../../hooks/auth'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { ValidationMessage } from '../../components/ValidationMessage'
 
 
 export function SignIn() {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+    const [emailIsValid, setEmailIsValid] = useState(false)
 
     const { signIn } = useAuth()
 
+    //email regex
+    const mailformat = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
+
     function handleSignIn() {
-        signIn({ email, password })
+        if(emailIsValid) {
+            signIn({ email, password })
+        }
     }
+
+    
+    useEffect(() => {
+        if(email )
+        function validateEmail() {
+            if(email.match(mailformat)) {
+                setEmailIsValid(true)
+                console.log('entrou')
+            } else {
+                setEmailIsValid(false)
+                // console.log('email n passou')
+        
+            }
+    
+        }
+
+    }, [email])
 
     return(
         <Container>
@@ -26,14 +49,14 @@ export function SignIn() {
                 <h2>Login</h2>
                 <Input 
                     placeholder="E-mail"
-                    type="text"
+                    type="email"
                     icon= {FiMail}
                     onChange={e => setEmail(e.target.value)}
                 
                 />
-                <ValidationMessage>
-                    <p>Inform a valid e-mail</p>
-                </ValidationMessage>
+                {/* if email is invalid show message */}
+                { !emailIsValid && <ValidationMessage><p>Inform a valid e-mail</p></ValidationMessage>}
+                
                 <Input 
                     placeholder="Password"
                     type="password"
