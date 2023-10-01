@@ -7,6 +7,7 @@ import { useState } from 'react'
 import { useAuth } from '../../hooks/auth'
 import avatarPlaceholder from '../../assets/avatar_placeholder.svg'
 import { api } from '../../services/api'
+import { ValidationMessage } from '../../components/ValidationMessage'
  
 export function Profile() {
     const { user, updateProfile } = useAuth()
@@ -14,15 +15,18 @@ export function Profile() {
     const [email, setEmail] = useState(user.email) 
     const [passwordOld, setPasswordOld] = useState('')
     const [passwordNew, setPasswordNew] = useState('')
+    const [messageValidation, setMessageValidation] = useState('')
     
 
     const avatarUrl = user.avatar ? `${api.defaults.baseURL}/files/${user.avatar}` : avatarPlaceholder
     const [avatar, setAvatar] = useState(avatarUrl)
     const [avatarFile, setavatarFile] = useState(null)
 
+    const mailformat = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
+
     async function handleUpdate() {
-        if(name === "") return alert('Name can not be empty')
-        if(email === "") return alert('E-mail can not be empty')
+        if(name === "") return setMessageValidation('Enter a valid Name')
+        if(!email.match(mailformat)) return setMessageValidation('Enter a valid E-mail')
         const updated = {
             name, 
             email,
@@ -32,7 +36,7 @@ export function Profile() {
         const userUpdated = Object.assign(user, updated)
         
         // return console.log(userUpdated)
-        await updateProfile({ user: userUpdated, avatarFile })
+        await updateProfile({ user: userUpdated, avatarFile, setMessageValidation })
     }
 
     function handleChangeAvatar(event) {
@@ -48,7 +52,7 @@ export function Profile() {
         <Container>
             <header>
                 <div>
-                    <ButtonText title="Back" />
+                    <ButtonText title="Back" to="/" />
                 </div>
             </header>
             <Form>
@@ -95,6 +99,7 @@ export function Profile() {
 
                     />
                 </div>
+                {messageValidation !== '' && <ValidationMessage><p>{ messageValidation }</p></ValidationMessage>}
                 <Button title="Save" onClick={handleUpdate} />
             </Form>
         </Container>

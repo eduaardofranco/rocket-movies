@@ -8,7 +8,7 @@ function AuthProvider({ children }) {
 
 
     //authentication function
-    async function signIn({ email, password }) {
+    async function signIn({ email, password, setMessageValidation }) {
         try {
             const response = await api.post('/sessions', { email, password })
             const { user, token } = response.data
@@ -23,7 +23,7 @@ function AuthProvider({ children }) {
 
         } catch(error) {
             if(error.response) {
-                alert(error.response.data.message)
+                setMessageValidation(error.response.data.message)
             } else {
                 alert('Error to Enter')
             }
@@ -53,7 +53,7 @@ function AuthProvider({ children }) {
         setData({})
     }
     
-    async function updateProfile({ user, avatarFile }) {
+    async function updateProfile({ user, avatarFile, setMessageValidation }) {
         try {
 
             //if there is avatar, update it
@@ -70,11 +70,11 @@ function AuthProvider({ children }) {
             localStorage.setItem('@rocketmovies:user', JSON.stringify(user))
 
             setData({ user, token: data.token})
-            alert('Profile updated!')
+            setMessageValidation('Profile updated!')
 
         } catch(error) {
             if(error.response) {
-                alert(error.response.data.message)
+                setMessageValidation(error.response.data.message)
             } else {
                 alert('Error to update infos')
             }
