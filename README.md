@@ -89,12 +89,6 @@ Include screenshots of the application to provide a visual representation of the
 
 ![Add Movie Page](src/assets/screenshots/new.png)
 
-...
-
----
-
-In this example, we have added a "Screenshots" section with subsections for various parts of the application, each accompanied by an image illustrating that specific section.
-
 
 ## License
 
