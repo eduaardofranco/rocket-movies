@@ -69,8 +69,8 @@ The **Rocket Movies** project is a simple CRUD (Create, Read, Update, Delete) ap
    - The frontend development server will start on `http://localhost:5173`
 
 ## Usage
-#### user: admin@admin.com
-#### password: 123</br>
+user: admin@admin.com<br>
+password: 123</br>
 1. Navigate to the frontend application using a web browser.
 2. Use the interface to perform CRUD operations on movie information.
 
