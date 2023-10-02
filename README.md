@@ -10,7 +10,6 @@ Welcome to **Rocket Movies**, a CRUD application that allows users to manage mov
 - [Technologies Used](#technologies-used)
 - [Setup Instructions](#setup-instructions)
 - [Usage](#usage)
-- [Contributing](#contributing)
 - [License](#license)
 
 ## Introduction
