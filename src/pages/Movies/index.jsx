@@ -51,7 +51,7 @@ export function Movies(title) {
                 <div className="content">
                     
                     {/* if there is no movie, show message */}
-                    {movieNotes.length === 0 && <h2>no movies yet</h2>}
+                    {movieNotes.length === 0 && <h2>no movies</h2>}
                     {    
                         movieNotes && movieNotes.map(movie => (
                         
