@@ -1,8 +1,103 @@
-# React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# Rocket Movies CRUD App
 
-Currently, two official plugins are available:
+Welcome to **Rocket Movies**, a CRUD application that allows users to manage movie information. The project is divided into two main components: a backend API developed using Node.js, Express, and Knex, and a frontend built with React.js and Styled Components.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Table of Contents
+
+- [Introduction](#introduction)
+- [Features](#features)
+- [Technologies Used](#technologies-used)
+- [Setup Instructions](#setup-instructions)
+- [Usage](#usage)
+- [Contributing](#contributing)
+- [License](#license)
+
+## Introduction
+
+The **Rocket Movies** project is a simple CRUD (Create, Read, Update, Delete) application that allows users to manage movie data. The backend provides an API to perform CRUD operations on movie information, while the frontend enables users to interact with the data in a user-friendly interface.
+
+## Features
+
+- Create, Read, Update, and Delete movie information.
+- Seamless integration between the backend API and the frontend UI.
+
+## Technologies Used
+
+- **Backend**:
+  - Node.js: JavaScript runtime environment.
+  - Express: Web application framework for Node.js.
+  - Knex.js: SQL query builder for Node.js.
+  
+- **Frontend**:
+  - React.js: JavaScript library for building user interfaces.
+  - Styled Components: CSS-in-JS library for component styling.
+
+## Setup Instructions
+ 
+1. **Clone the Repository**:
+   ```bash
+   git clone https://github.com/eduaardofranco/rocket-movies.git
+   cd rocket-movies
+   ```
+
+2. **Install Dependencies**:
+   ```bash
+   # Navigate to the backend directory and install backend dependencies
+   cd backend
+   npm install
+
+   # Navigate to the frontend directory and install frontend dependencies
+   cd ../frontend
+   npm install
+   ```
+
+3. **Run the Application**:
+   ```bash
+   # Start the backend server (from the backend directory)
+   npm run dev
+
+   # Start the frontend development server (from the frontend directory)
+   npm  run dev
+   ```
+
+4. **Access the Application**:
+   - The backend server will start on `http://localhost:3333`
+   - The frontend development server will start on `http://localhost:5173`
+
+## Usage
+
+1. Navigate to the frontend application using a web browser.
+2. Use the interface to perform CRUD operations on movie information.
+
+Of course! Adding a section for screenshots can be very helpful for users to visualize the application. Here's how you can incorporate a "Screenshots" section in your README:
+
+
+## Screenshots
+
+Include screenshots of the application to provide a visual representation of the features and interface.
+
+### Home Page
+
+![Home Page](assts/screenshots/home.png)
+
+### Movie Details Page
+
+![Movie Details Page](assets/screenshots/detail.png)
+
+### Add Movie Page
+
+![Add Movie Page](assets/screenshots/new.png)
+
+...
+
+---
+
+In this example, we have added a "Screenshots" section with subsections for various parts of the application, each accompanied by an image illustrating that specific section.
+
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).
+
+
