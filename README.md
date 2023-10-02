@@ -41,7 +41,7 @@ The **Rocket Movies** project is a simple CRUD (Create, Read, Update, Delete) ap
    cd rocket-movies
    ```
 2. **Install Backend**:
-   Go to repository [https://github.com/eduaardofranco/Movie_notes]
+   <p>Go to repository [https://github.com/eduaardofranco/Movie_notes]</p>
    ```bash
    git clone https://github.com/eduaardofranco/rocket-movies.git
    cd rocket-movies
@@ -49,9 +49,8 @@ The **Rocket Movies** project is a simple CRUD (Create, Read, Update, Delete) ap
    ```
 
 3. **Install Dependencies**:
-
-   # Navigate to the frontend directory and install frontend dependencies
-   ```
+   <p>Navigate to the frontend directory and install frontend dependencies</p>
+   ```bash
    cd ../frontend
    npm install
    ```
