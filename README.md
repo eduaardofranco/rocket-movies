@@ -79,7 +79,7 @@ Include screenshots of the application to provide a visual representation of the
 
 ### Home Page
 
-![Home Page](src/assts/screenshots/home.png)
+![Home Page](src/assets/screenshots/home.png)
 
 ### Movie Details Page
 
