@@ -79,15 +79,15 @@ Include screenshots of the application to provide a visual representation of the
 
 ### Home Page
 
-![Home Page](assts/screenshots/home.png)
+![Home Page](src/assts/screenshots/home.png)
 
 ### Movie Details Page
 
-![Movie Details Page](assets/screenshots/detail.png)
+![Movie Details Page](src/assets/screenshots/detail.png)
 
 ### Add Movie Page
 
-![Add Movie Page](assets/screenshots/new.png)
+![Add Movie Page](src/assets/screenshots/new.png)
 
 ...
 
