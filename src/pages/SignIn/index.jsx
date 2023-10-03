@@ -26,7 +26,15 @@ export function SignIn() {
         setMessageValidation('')
         signIn({ email, password, setMessageValidation })
     }
-
+    //login w/ enter key
+    useEffect(() => {
+        document.addEventListener('keydown', (event) =>{
+            if (event.key === 'Enter') {
+                event.preventDefault();
+                handleSignIn();
+              }
+        })
+    },[])
     return(
         <Container>
             <Form>

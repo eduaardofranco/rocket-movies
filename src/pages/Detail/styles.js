@@ -18,9 +18,6 @@ export const Container = styled.div`
         color: ${({ theme }) => theme.COLORS.WHITE};
         margin-right: 1.9rem;
     }
-    .content {
-        max-height: calc(100vh - 23.8rem);
-    }
     .header {
         > div {
             display: flex;

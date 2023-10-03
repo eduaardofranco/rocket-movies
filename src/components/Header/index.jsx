@@ -23,21 +23,24 @@ export function Header({ children }) {
 
     return(
         <Container>
-            <h1>RocketMovies</h1>
-            <Search>
-                {children}
-            </Search>
-            <Profile>
-                <div>
+            <div className="center">
+                <h1>RocketMovies</h1>
+                <Search>
+                    {children}
+                </Search>
+                <Profile>
+                    <div>
+                        <Link to="/profile">
+                            {user.name}
+                        </Link>
+                        <span onClick={handleSignOut}>Exit</span>
+                    </div>
                     <Link to="/profile">
-                        {user.name}
+                        <img src={avatarUrl} alt={`${user.name} photo`}></img>
                     </Link>
-                    <span onClick={handleSignOut}>Exit</span>
-                </div>
-                <Link to="/profile">
-                    <img src={avatarUrl} alt={`${user.name} photo`}></img>
-                </Link>
-            </Profile>
+                </Profile>
+
+            </div>
 
         </Container>
     )

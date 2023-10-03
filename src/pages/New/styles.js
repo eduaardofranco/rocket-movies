@@ -1,9 +1,15 @@
 import styled from 'styled-components'
 
 export const Container = styled.div`
+    header h1 {
+        display: block;
+        font-size: 2.4rem;
+        @media (max-width: 350px) {
+            font-size: 1.8rem;
+        }
+    }
 
     .content {
-        height: calc(100vh - 22.5rem);
         padding-right: 1.5rem;
         > h1 {
             color: ${({ theme }) => theme.COLORS.WHITE};
@@ -19,6 +25,9 @@ export const Container = styled.div`
         display: flex;
         flex-wrap: wrap;
         padding-top: 1.6rem;
+        input {
+            width: 100%;
+        }
 
     }
     .buttons {
@@ -41,6 +50,14 @@ export const Form = styled.form`
     > div {
         display: flex;
         gap: 4rem;
+        @media (max-width: 400px) {
+            display: block;
+            gap: 0;
+            > div {
+                margin-top: 4rem;
+
+            }
+        }
     }
     > textarea {
         margin: 4rem 0;

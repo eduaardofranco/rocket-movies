@@ -8,6 +8,14 @@ export default createGlobalStyle`
     }
     :root {
         font-size: 62.5%;
+        &::-webkit-scrollbar {
+            width: .8rem;
+        }
+        &::-webkit-scrollbar-thumb {
+            background: ${({ theme }) => theme.COLORS.PINK};
+            border-radius: .8rem;
+
+        }
     }
     body, input, textarea, button {
         background-color: ${({ theme }) => theme.COLORS.BG_900};
@@ -31,18 +39,15 @@ export default createGlobalStyle`
         grid-area: content;
         width: 133.6rem;
         margin: 0 auto;
+        @media (max-width: 1300px) {
+            padding: 0 2rem 2rem 2rem;
+            width: 100%;
+        }
         
     }
     .content {
-        overflow-y: auto;
-        padding-right: .8rem;
-        &::-webkit-scrollbar {
-            width: .8rem;
-        }
-        &::-webkit-scrollbar-thumb {
-            background: ${({ theme }) => theme.COLORS.PINK};
-            border-radius: .8rem;
-
-        }
+        /* overflow-y: auto; */
+        /* padding-right: .8rem; */
+       
     }
 `;

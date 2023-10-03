@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 
 export const Container = styled.div`
+    width: 100%;
     header {
         background-color: ${({ theme }) => theme.COLORS.BG_500};
         display: flex;
@@ -9,11 +10,17 @@ export const Container = styled.div`
         > div {
             margin: 0 auto;
             width: 133.6rem;
-            button {
-                margin: 0;
+        }
+        h1 {
+            display: block;
+            font-size: 2.4rem;
+            @media (max-width: 350px) {
+                display: block!important;
             }
         }
-
+        @media (max-width: 35rem) {
+            align-items: start;
+        }
     }
 `;
 
@@ -30,6 +37,10 @@ export const Form = styled.form`
     }
     button {
         margin-top: 1.6rem
+    }
+    @media (max-width: 35rem) {
+        padding: 0 1rem;
+        width: 100%;
     }
 
 `;

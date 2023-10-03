@@ -40,11 +40,17 @@ export const Form = styled.form`
         color: ${({ theme }) => theme.COLORS.PINK};
         margin-top: 4.2rem;
 
-    } 
+    }
+    @media (max-width: 50rem) {
+        padding: 0 3rem;
+        width: 100%;
+    }
 `;
+
 
 export const Background = styled.div`
     flex: 1;
     background: url(${backgroundImg}) no-repeat center center;
     background-size: cover;
 `;
+

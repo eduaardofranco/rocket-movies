@@ -36,6 +36,10 @@ export const Form = styled.form`
     button {
         margin-top: 2.4rem;
     }
+    @media (max-width: 50rem) {
+        padding: 0 3rem;
+        width: 100%;
+    }
 `;
 
 export const Background = styled.div`

@@ -9,11 +9,13 @@ import { Button } from '../../components/Button'
 import { useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 import { api } from '../../services/api'
+import { ValidationMessage } from '../../components/ValidationMessage'
 
 export function New() {
     const [title, setTitle] = useState('')
     const [description, setDescription] = useState('')
     const [rating, setRating] = useState(0)
+    const [messageValidation, setMessageValidation] = useState('')
 
     const [tags, setTags] = useState([])
     const [newTag, setNewTag] = useState('')
@@ -28,6 +30,7 @@ export function New() {
             setNewTag('')
         } else {
             return alert('Please enter a new Tag')
+            return setMessageValidation('This tag is already entered')
         }
     }
     function handleRemoveTag(deleted) {
@@ -36,10 +39,10 @@ export function New() {
 
     async function handleNewMovie() {
         if(!title) {
-            return alert('Please enter a Title')
+            return setMessageValidation('Inform a Title')
         }
         if(!rating) {
-            return alert('Please enter a Grade')
+            return setMessageValidation('Inform a Grade')
         }
         await api.post('/movie_notes',{
             title,
@@ -48,6 +51,9 @@ export function New() {
             rating
         })
         alert('Movie registred sucessfully!')
+        navigate('/')
+    }
+    function handleCancelAction() {
         navigate('/')
     }
 
@@ -67,7 +73,7 @@ export function New() {
                              onChange={e => setTitle(e.target.value)}
                             />
                             <Input
-                             placeholder="Your Grade (0 to 5)"
+                             placeholder="Grade (0 to 5)"
                              type="number"
                              min="0"
                              max="5"
@@ -79,6 +85,7 @@ export function New() {
                           type="text"
                           onChange={e => setDescription(e.target.value)}
                         />
+                        {messageValidation !== '' && <ValidationMessage><p>{ messageValidation }</p></ValidationMessage>}
                     </Form>
                     <Section title="Tags">
                         <div className="tags">
@@ -102,7 +109,7 @@ export function New() {
                         </div>
                     </Section>
                     <div className="buttons">
-                        <Button title="Cancel" />
+                        <Button title="Cancel" onClick={handleCancelAction} />
                         <Button
                           title="Save"
                           onClick={handleNewMovie}

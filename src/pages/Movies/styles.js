@@ -8,6 +8,11 @@ export const Container = styled.div`
     grid-template-areas:
         "header"
         "content";
+    h1 {
+        @media (max-width: 630px) {
+            display: none;
+        }
+    }
 
     > main {
         
@@ -25,8 +30,6 @@ export const Container = styled.div`
             }
         }
         > .content {
-            height: calc(100vh - 31.4rem);
-            margin-bottom: 5rem;
             > h2 {
                 color: ${({ theme }) => theme.COLORS.GRAY};
                 font-size: 3rem;

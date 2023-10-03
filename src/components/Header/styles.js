@@ -14,16 +14,23 @@ export const Container = styled.header`
      h1 {
         color: ${({ theme }) => theme.COLORS.PINK};
         font-size: 2.4rem;
+        @media (max-width: 1000px) {
+            font-size: 1.8rem;
+        }
     }
-    .content {
+    .center {
         display: flex;
         align-items: center;
         justify-content: space-between;
+        width: 133.6rem;
+        @media (max-width: 1300px) {
+            padding: 0 2rem;
+            width: 100%;
+        }
     }
 `;
 
 export const Search = styled.div`
-    margin: 0 18.1rem;
     width: 63rem;
     
     input {
@@ -39,6 +46,13 @@ export const Search = styled.div`
             outline: 1px solid ${({ theme }) => theme.COLORS.GRAY};;
         }
 
+    }
+    @media (max-width: 1000px) {
+        width: 75%;
+        margin: 0 1rem;
+    }
+    @media (min-width: 73rem) {
+        /* width: 30rem; */
     }
 `;
 export const Profile = styled.div`
@@ -68,5 +82,9 @@ export const Profile = styled.div`
         border-radius: 50%;
         height: 6.4rem;
         width: 6.4rem;
+        @media (max-width: 40rem) {
+            height: 3rem;
+            width: 3rem;
+        }
     }
 `;

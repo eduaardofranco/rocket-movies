@@ -6,7 +6,7 @@ export const Container = styled.div`
     cursor: pointer;
     display: block;
     padding: 3.2rem;
-    min-width: 130rem;
+    width: 130rem;
     &+ div {
         margin-top: 2.4rem;
     }
@@ -25,5 +25,8 @@ export const Container = styled.div`
         text-overflow: ellipsis;
         max-height: 4rem;
         overflow: hidden;
+    }
+    @media (max-width: 130rem) {
+        width: 100%;
     }
 `;
