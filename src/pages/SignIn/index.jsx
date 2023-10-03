@@ -17,7 +17,7 @@ export function SignIn() {
 
     const { signIn } = useAuth()
     const mailformat = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
-
+    
     function handleSignIn() {
         //verify email before send data
         if(!email.match(mailformat)) {
@@ -26,15 +26,6 @@ export function SignIn() {
         setMessageValidation('')
         signIn({ email, password, setMessageValidation })
     }
-    //login w/ enter key
-    useEffect(() => {
-        document.addEventListener('keydown', (event) =>{
-            if (event.key === 'Enter') {
-                event.preventDefault();
-                handleSignIn();
-              }
-        })
-    },[])
     return(
         <Container>
             <Form>
@@ -48,7 +39,6 @@ export function SignIn() {
                     onChange={e => setEmail(e.target.value)}
                 
                 />
-                {/* if email is invalid show message */}
                 
                 <Input 
                     placeholder="Password"
