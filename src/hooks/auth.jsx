@@ -10,36 +10,39 @@ function AuthProvider({ children }) {
     //authentication function
     async function signIn({ email, password, setMessageValidation }) {
         try {
-            const response = await api.post('/sessions', { email, password })
-            const { user, token } = response.data
+            const response = await api.post(
+                'sessions',
+                { email, password },
+                { withCredentials: true }
+            )
 
-            //set user and token to the localstorage
+            const { user } = response.data
+
+            //set user to the localstorage
             localStorage.setItem('@rocketmovies:user', JSON.stringify(user))
-            localStorage.setItem('@rocketmovies:token', token)
 
-            //add token in the header of requests
-            api.defaults.headers.common['Authorization'] = `Bear ${token}`
-            setData({ user, token })
+            setData({ user })
 
         } catch(error) {
-            if(error.response) {
-                setMessageValidation(error.response.data.message)
-            } else {
-                alert('Error to Enter')
-            }
+            if (error.response && error.response.data) {
+                console.error('Error response data:', error.response.data); // Log the error response data
+                setMessageValidation(error.response.data.message || 'Unknown error occurred.');
+              } else if (error.message) {
+                console.error('Error message:', error.message); // Log the error message
+                setMessageValidation(error.message || 'Unknown error occurred.');
+              } else {
+                console.error('Unknown error:', error); // Log the unknown error
+                alert('Error while logging in.');
+              }
         }
     }
 
     useEffect(() => {
-        const token = localStorage.getItem('@rocketmovies:token')
         const user = localStorage.getItem('@rocketmovies:user')
-        //if there is token e user in the localstorage
-        if(token && user) {
-            //sets token to the header of requests again
-            api.defaults.headers.common['Authorization'] = `Bear ${token}`
-
+       
+        //if there is user in the localstorage
+        if(user) {
             setData({
-                token,
                 user: JSON.parse(user)
             })
 
@@ -47,7 +50,6 @@ function AuthProvider({ children }) {
     },[])
 
     function signOut() {
-        localStorage.removeItem('@rocketmovies:token')
         localStorage.removeItem('@rocketmovies:user')
 
         setData({})
